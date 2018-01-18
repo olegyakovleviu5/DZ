@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Add new{% endblock %}
+{% block userlog %}<p class="text-primary">User: <span class="glyphicon glyphicon-user "></span>{{ user.username }}</p>​{% endblock %}
+{% block content %}
+        <div class="jumbotron">
+            <div class="container">
+                <div class="page-header">
+                    <h3>Добавить канал</h3>
+                    {% for err in errors.values %}
+                        <div class="alert alert-danger" >{{ err }}</div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8">
+                    <form method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Название</label>
+                            <input type="text" name="channel_name" class="form-control"  placeholder="название">
+                        </div>
+                        <div class="form-group">
+                            <label>Рейтинг</label>
+                            <input type="text" name="rating" class="form-control"  placeholder="рейтинг">
+                        </div>
+                        <div class="form-group">
+                            <label>Тип канала</label>
+                            <input type="text" name="type" class="form-control"  placeholder="Тип канала">
+                        </div>
+                        <div class="form-group">
+                            <label>Кол-во видео</label>
+                            <input type="text" name="videos" class="form-control"  placeholder="кол-во видео">
+                        </div>
+                        <div class="form-group">
+                            <label>Picture</label>
+                            <input type="file" name="picture" >
+                        </div>
+                        <button type="submit" class="btn btn-default btn-lg btn-block">Добавить</button>
+                        <a role="button" class="btn btn-default btn-lg btn-block" href="/channels">Назад к списку</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

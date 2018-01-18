@@ -1,0 +1,16 @@
+.center-pos
+{
+	text-align: center;
+	padding: 20px 0;
+}
+
+.center-pos img
+{
+	max-width: 60%;
+}
+
+.title_padding
+{
+	font-size: 24px;
+	padding-bottom: 20px;
+}

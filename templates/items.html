@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% csrf_token %}
+{% block title %}Channels{% endblock %}
+{% block userlog %}<p class="text-primary">User: <span class="glyphicon glyphicon-user "></span>{{ user.username }}</p>​{% endblock %}
+{% block content %}
+
+
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="blog-header">
+                <h1  class="col-lg-offset-4">Список каналов</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    {% include 'item.html' with item=item %}
+                </div>
+                <div class="col-md-offset-9">
+{#                        {% if user.is_superuser %}#}
+                            <a role="button" class="btn btn-default btn-lg btn-block"
+                                onClick='location.href="/new_channel"'>Добавить канал</a>
+{#                        {% endif %}#}
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if channels.has_previous %}
+                    <a href="?page={{ channels.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ channels.number }} of {{ channels.paginator.num_pages }}.
+                </span>
+                {% if channels.has_next %}
+                    <a href="?page={{ channels.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
